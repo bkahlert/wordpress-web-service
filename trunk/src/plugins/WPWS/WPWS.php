@@ -2,7 +2,7 @@
 
 /*
 Plugin Name: WordPress Web Service
-Plugin URI: http://bkahlert.com/
+Plugin URI: http://code.google.com/p/wordpress-web-service/
 Description: WordPress Web Service is used to access WordPress ressources via WSDL and SOAP. The Service Port is available on http://yoursite.com/blog/index.php/wpws whereas the Web Service Descriptor can be found by adding ?wsdl (http://yoursite.com/blog/index.php/wpws?wsdl). If you type http://yoursite.com/blog/index.php/wpws directly in your browser you get some useful information (plugin must be turned on in any case).
 Version: 0.1.0
 Author: Bj&ouml;rn Kahlert
