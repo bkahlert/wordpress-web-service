@@ -67,24 +67,102 @@ class wp_WebService {
 	 
 	/*** GALLERIES ***/
 	
+	
+	function getGalleryHierarchy($args = null) {
+		// Note that the user provided $args is the 2nd operator which enforced
+		// the parameters defined in the array
+		$r = wp_parse_args(array("hierarchical" => 1, "sort_column" => "menu_order"), $args);
+		
+		$wpws_pages = wp_WebService::getPages($r);
+		
+		$wpws_galleries = array();
+		$breadcrumb = array();
+		foreach($wpws_pages as $wpws_page) {
+			$mainImage = wp_WebService::getImages($wpws_page->id, 1, 1);
+			$mainImage = (count($mainImage) < 1) ? null : $mainImage[0];
+			
+			$wpws_gallery = new wpws_Gallery(
+								$wpws_page->id,
+								$wpws_page->parentId,
+								$wpws_page->title,
+								"",
+								$mainImage,
+								null,
+								array());
+			
+			$last_gallery = array_pop($breadcrumb);
+			if($last_gallery == null && $wpws_gallery->parentId == 0) {
+				// we should be in the top level and the gallery's parent id also represents the top level
+				$wpws_galleries[] = $wpws_gallery;
+				$breadcrumb[] = $wpws_gallery;
+			} else if($last_gallery->id == $wpws_gallery->parentId) {
+				// the last generated gallery is the parent gallery of the current gallery
+				// this means we need to add the current gallery to the subGalleries attribute of it's parent
+				// we also need to put both parent- and subGallery on the $breadcrumb
+				$last_gallery->subGalleries[] = $wpws_gallery;
+				$breadcrumb[] = $last_gallery;
+				$breadcrumb[] = $wpws_gallery;
+			} else if($last_gallery->parentId == $wpws_gallery->parentId) {
+				// the last generated gallery is on the same level as the current gallery
+				// this means we need to add the current gallery to the last' parent gallery
+				// the current gallery will be placed on the $breadcrumb instead of the last gallery
+				$parent_gallery = array_pop($breadcrumb);
+				if($parent_gallery == null) {
+					$wpws_galleries[] = $wpws_gallery;
+					$breadcrumb[] = $wpws_gallery;
+				} else {
+					$parent_gallery->subGalleries[] = $wpws_gallery;
+					$breadcrumb[] = $parent_gallery;
+					$breadcrumb[] = $wpws_gallery;
+				}
+			} else {
+				// the last gallery was also the last child of it's parent gallery
+				// we need to remove galleries from $breadcrumb till we find the current gallery's parent
+				$parent_gallery = null;
+				while(($parent_gallery = array_pop($breadcrumb)) != null) {
+					if($parent_gallery->id == $wpws_gallery->parentId) {
+						$parent_gallery->subGalleries[] = $wpws_gallery;
+						$breadcrumb[] = $parent_gallery;
+						$breadcrumb[] = $wpws_gallery;
+						break;
+					}
+				}
+				
+				// in this case the current gallery has no parent gallery
+				if($parent_gallery == null) {
+					$wpws_galleries[] = $wpws_gallery;
+					$breadcrumb[] = $wpws_gallery;
+				}
+			}
+		}
+		return $wpws_galleries;
+	}
+	
 	/**
-	 * Returns all galleries (= pages treated as galleries)
+	 * Returns all galleries (= pages treated as galleries).
+	 * Each gallery has the attribute subGalleries which is an empty array
+	 * since the hierarchy is not constructed.
 	 * Note that to minimize network traffic only the meta data and the main image are provided while
 	 * the images array is always empty.
 	 * @return wpws_Gallery[]
 	 */
 	function getGalleries($args = null) {
+		// Note that the user provided $args is the 2nd operator which enforced
+		// the parameters defined in the array
 		$wpws_pages = wp_WebService::getPages($args);
 		
 		$wpws_galleries = array();
 		foreach($wpws_pages as $wpws_page) {
 			$mainImage = wp_WebService::getImages($wpws_page->id, 1, 1);
 			$mainImage = (count($mainImage) < 1) ? null : $mainImage[0];
+			
 			$wpws_galleries[] = new wpws_Gallery(
 								$wpws_page->id,
 								$wpws_page->parentId,
 								$wpws_page->title,
+								"",
 								$mainImage,
+								null,
 								null);
 		}
 		return $wpws_galleries;
@@ -106,8 +184,10 @@ class wp_WebService {
 						$wpws_page->id,
 						$wpws_page->parentId,
 						$wpws_page->title,
+						"",
 						$mainImage,
-						$wpws_images);
+						$wpws_images,
+						null);
 		return $wpws_gallery;
 	}
 	

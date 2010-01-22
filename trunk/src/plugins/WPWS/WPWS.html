@@ -9,11 +9,37 @@ body {
 	padding: 0 1em;
 }
 </style>
+<script language="javascript">
+<!--
+function getHome() {
+	return location.href.substring(0, location.href.indexOf("/index.php"));
+}
+
+function getWSDLUrl() {
+	return location.href.replace("/wpws", "?/wpws?wsdl");
+}
+
+function getSoapClientUrl() {
+	var soapclient_url = "http://www.soapclient.com/soapclient?template=/clientform.html&fn=soapform&SoapTemplate=none&SoapWSDL=";
+	soapclient_url += escape(getWSDLUrl());
+	return soapclient_url;
+}
+-->
+</script>
 </head>
 
 <body>
 <h1>WordPress Web Service</h1>
 <p>WordPress Web Service is used to access WordPress ressources via SOAP.<br />
 For more information see <a href="https://code.google.com/p/wordpress-web-service" target="_blank">WordPress Web Service Plugin</a>.</p>
+<p>If you want to get an idea how and if this plugin really work<br />
+you get check out the <a href="http://www.soapclient.com/soaptest.html" target="_blank">Generic SOAP Client</a>.</p>
+<p>Click <script language="javascript">document.write("<a href=\"" + getSoapClientUrl() + "\" target=\"_blank\">here</a>");</script> to directly access the provided methods.</p>
+
+<p>Your WSDL file can be accessed through <script language="javascript">document.write("<a href=\"" + getWSDLUrl() + "\" target=\"_blank\">" + getWSDLUrl() + "</a>");</script>.<br/>
+<strong>Should the link does not work the <em>wpws.wsdl</em> could not be created. <br />
+In this case you need to make a copy of <em>wpws.template.wsdl</em>, rename it to <em>wpws.wsdl</em> and<br />
+replace the string <em>{relative_path}</em> with &quot;<script language="javascript">document.write(getHome());</script>&quot;.</strong></p>
+
 </body>
 </html>

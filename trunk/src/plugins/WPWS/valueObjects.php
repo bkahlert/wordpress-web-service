@@ -67,15 +67,19 @@ class wpws_Gallery {
 	public $id;
 	public $parentId;
 	public $title;
+	public $description;
 	public $mainImage;
 	public $images;
+	public $subGalleries;
 	
-	function __construct($id, $parentId, $title, $mainImage, $images) {
+	function __construct($id, $parentId, $title, $description, $mainImage, $images, $subGalleries) {
 		$this->id = $id;
 		$this->parentId = $parentId;
 		$this->title = $title;
 		$this->mainImage = $mainImage;
+		$this->description = $description;
 		$this->images = $images;
+		$this->subGalleries = $subGalleries;
 	}
 }
 

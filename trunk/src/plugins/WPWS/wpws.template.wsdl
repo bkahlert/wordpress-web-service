@@ -77,8 +77,10 @@
 					<element name="id" type="xsd:unsignedInt"/>
 					<element name="parentId" type="xsd:unsignedInt"/>
 					<element name="title" type="xsd:string"/>
+					<element name="description" type="xsd:string"/>
 					<element name="mainImage" type="typens:Image"/>
 					<element name="images" type="typens:ImageArray"/>
+					<element name="subGalleries" type="typens:GalleryArray"/>
 				</all>
 			</complexType>
 			<complexType name="GalleryArray">
@@ -132,6 +134,12 @@
 	<wsdl:message name="getPageResponse">
 		<wsdl:part name="return" type="typens:Page"/>
 	</wsdl:message>
+	<wsdl:message name="getGalleryHierarchyRequest">
+		<wsdl:part name="args" type="xsd:string"/>
+	</wsdl:message>
+	<wsdl:message name="getGalleryHierarchyResponse">
+		<wsdl:part name="return" type="typens:GalleryArray"/>
+	</wsdl:message>
 	<wsdl:message name="getGalleriesRequest">
 		<wsdl:part name="args" type="xsd:string"/>
 	</wsdl:message>
@@ -166,6 +174,10 @@
 		<wsdl:operation name="getPage">
 			<wsdl:input message="typens:getPageRequest"/>
 			<wsdl:output message="typens:getPageResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="getGalleryHierarchy">
+			<wsdl:input message="typens:getGalleryHierarchyRequest"/>
+			<wsdl:output message="typens:getGalleryHierarchyResponse"/>
 		</wsdl:operation>
 		<wsdl:operation name="getGalleries">
 			<wsdl:input message="typens:getGalleriesRequest"/>
@@ -212,6 +224,15 @@
 		</wsdl:operation>
 		<wsdl:operation name="getPage">
 			<soap:operation soapAction="urn:#getPage"/>
+			<wsdl:input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:WordPress"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:WordPress"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getGalleryHierarchy">
+			<soap:operation soapAction="urn:#getGalleryHierarchy"/>
 			<wsdl:input>
 				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:WordPress"/>
 			</wsdl:input>

@@ -9,6 +9,8 @@ Author: Bj&ouml;rn Kahlert
 Author URI: http://bkahlert.com/
 */
 
+require_once(dirname(__FILE__) . "/wp-access.php");
+
 /**
  * Catches index.php/wpws requests, stops further execution by WordPress
  * and handles the request depending on the request type.
@@ -25,9 +27,7 @@ Author URI: http://bkahlert.com/
  * by making a copy of the template WSDL and by replacing the address placeholder.
  * Should you ever need to reallocate the Blog simply delete the wpws.wsdl but provoce it's recreation.
  */
-function wpws_handle_request($wp) {
-	require_once(dirname(__FILE__) . "/wp-access.php");
-	
+function wpws_handle_request($wp) {	
 	// Look for the magic /wpws string in the $_SERVER variable
 	$wpws_found = false;
 	$wsdl_requested = false;
@@ -67,6 +67,10 @@ function wpws_handle_request($wp) {
 	// no wpws-request, go on with WordPress execution
 }
 
+// creates a customized WSDL on plugin activation
+register_activation_hook(__FILE__, 'wpws_createWSDL');
+
+// checks whether the request should be handled by WPWS
 add_action("parse_request", "wpws_handle_request");
 
 ?>
