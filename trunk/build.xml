@@ -13,7 +13,8 @@
 	</target>
 	
 	<target name="dist" depends="pack" description="copy the plugin to the plugins dir">
-		<copyfile dest="${plugins}/WPWS.zip" src="${build}/WPWS.zip"/>
+		<copy tofile="${plugins}/WPWS.zip" file="${build}/WPWS.zip" overwrite="true"/>
+		<antcall target="clean"/>
 	</target>
 	
 	<target name="clean" description="clean up">
