@@ -34,6 +34,10 @@ function wpws_getWsdlUrl() {
 	return wpws_getBlogUrl() . "/index.php?/wpws/?wsdl";
 }
 
+function wpws_getPluginUrl() {
+	return wpws_getBlogUrl() . "/wp-content/plugins/wordpress-web-service";
+}
+
 function wpws_getBaseDir() {
 	$current_path = $_SERVER['SCRIPT_FILENAME'];
 	while(true) {
@@ -45,10 +49,6 @@ function wpws_getBaseDir() {
 			return $current_path;
 		}
 	}
-}
-
-function wpws_getPluginBaseDir() {
-	return wpws_getBlogUrl() . "/wp-content/plugins/wordpress-web-service";
 }
 
 ?>
