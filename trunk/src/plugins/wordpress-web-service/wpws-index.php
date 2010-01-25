@@ -23,8 +23,8 @@ for($i=0; $i<strlen($soapClientUrl); $i+=$numCharPerBreak) $formattedSoapClientU
 	<tr>
 		<td><p>Welcome to your WordPress Web Service (WPWS) plugin!</p>
 		<?php if(wpws_WSDLcustomized()) { ?>
-			<p>You have successfully installed WPWS and you're ready to connect <br />
-				your WSDL enabled application to your WordPress installation.<br />
+			<p><strong>You have successfully installed WPWS and you're ready to connect <br />
+				your WSDL enabled application to your WordPress installation.</strong><br />
 			Your WSDL url is:<br />
 <a href="<?php echo wpws_getWsdlUrl(); ?>" target="_blank"><?php echo wpws_getWsdlUrl(); ?></a>.</p>
 			<p>On the right you can see the Generic SOAP Client which has already loaded your WSDL file.<br />

@@ -33,7 +33,7 @@ Developers willing to help development on WPWS are greatly welcomed.
 
 1. Upload `wpws` directory to the `/wp-content/plugins/` folder
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Open `http://yoursite.com/blog/index.php**/wpws**` in your webbrowser to test the plugin.
+3. Open `http://yoursite.com/blog/index.php/wpws` in your webbrowser to test the plugin.
 
 == Screenshots ==
 
