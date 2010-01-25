@@ -31,7 +31,7 @@ for($i=0; $i<strlen($soapClientUrl); $i+=$numCharPerBreak) $formattedSoapClientU
 				You may want to check for proper operation of the plugin before using it.</p>
 		<?php } else { ?>
 			<p>You have nearly completed the installation of your WPWS plugin. <br />
-			Unfortunately your WSDL file could not be created automatically because of missing write rights.<br />
+			<strong>Unfortunately your WSDL file could not be created automatically because of missing write rights.</strong><br />
 			But that's no problem! Follow the 5 steps to create one manually:</p>
 			<ol>
 				<li>Use a FTP client to connect to your WordPress installation</li>
