@@ -38,9 +38,11 @@ Developers willing to help development on WPWS are greatly welcomed.
 
 == Screenshots ==
 
-1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
-the directory of the stable readme.txt, so in this case, `/tags/4.3/screenshot-1.png` (or jpg, jpeg, gif)
-2. This is the second screen shot
+1. Page http://yoursite.com/blog/index.php**/wpws** opened in a webbrowser 
+2. Data Connection Wizard with WSDL selected
+3. Entering the site's WSDL url as shown on the first screenshot
+4. Successfully parsed WSDL file with all currently supported methods and datatypes
+5. Successfully generated proxy classes for easy access of WordPress resources
 
 == Changelog ==
 
