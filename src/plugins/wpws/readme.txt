@@ -1,4 +1,4 @@
-=== Google Analytics ===
+=== WordPress Web Service ===
 Contributors: bkahlert
 Tags: wordpress, wsdl, webservices, web, service, web service, webservice, 	soap, rpc, flex, flash, flex4, flex4beta, flash builder
 Requires at least: 2.8
@@ -6,7 +6,6 @@ Tested up to: 2.9.0
 Stable tag: trunk
 
 WordPress Web Service is used to access WordPress resources via WSDL and SOAP.
-After installation simply open http://yoursite.com/blog/index.php/wpws to test your plugin.
 
 == Description ==
 
