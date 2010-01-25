@@ -1,0 +1,276 @@
+<?xml version="1.0"?>
+<wsdl:definitions xmlns:typens="urn:WordPress" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="WordPress" targetNamespace="urn:WordPress">
+	<wsdl:types>
+		<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:WordPress">
+			<complexType name="Post">
+				<all>
+					<element name="id" type="xsd:unsignedInt"/>
+					<element name="author" type="xsd:string"/>
+					<element name="date" type="xsd:string"/>
+					<element name="dateGmt" type="xsd:string"/>
+					<element name="content" type="xsd:string"/>
+					<element name="title" type="xsd:string"/>
+					<element name="excerpt" type="xsd:string"/>
+					<element name="status" type="xsd:string"/>
+					<element name="commentStatus" type="xsd:string"/>
+					<element name="pingStatus" type="xsd:string"/>
+					<element name="password" type="xsd:string"/>
+					<element name="name" type="xsd:string"/>
+					<element name="toPing" type="xsd:string"/>
+					<element name="pinged" type="xsd:string"/>
+					<element name="modified" type="xsd:string"/>
+					<element name="modifiedGmt" type="xsd:string"/>
+					<element name="contentFiltered" type="xsd:string"/>
+					<element name="parentId" type="xsd:unsignedInt"/>
+					<element name="guid" type="xsd:string"/>
+					<element name="menuOrder" type="xsd:unsignedInt"/>
+					<element name="type" type="xsd:string"/>
+					<element name="mimeType" type="xsd:string"/>
+					<element name="commentCount" type="xsd:string"/>
+					<element name="filter" type="xsd:string"/>
+				</all>
+			</complexType>
+			<complexType name="PostArray">
+				<complexContent>
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType" wsdl:arrayType="typens:Post[]"/>
+					</restriction>
+				</complexContent>
+			</complexType>
+			<complexType name="Page">
+				<all>
+					<element name="id" type="xsd:unsignedInt"/>
+					<element name="author" type="xsd:string"/>
+					<element name="date" type="xsd:string"/>
+					<element name="dateGmt" type="xsd:string"/>
+					<element name="content" type="xsd:string"/>
+					<element name="title" type="xsd:string"/>
+					<element name="excerpt" type="xsd:string"/>
+					<element name="status" type="xsd:string"/>
+					<element name="commentStatus" type="xsd:string"/>
+					<element name="pingStatus" type="xsd:string"/>
+					<element name="password" type="xsd:string"/>
+					<element name="name" type="xsd:string"/>
+					<element name="toPing" type="xsd:string"/>
+					<element name="pinged" type="xsd:string"/>
+					<element name="modified" type="xsd:string"/>
+					<element name="modifiedGmt" type="xsd:string"/>
+					<element name="contentFiltered" type="xsd:string"/>
+					<element name="parentId" type="xsd:unsignedInt"/>
+					<element name="guid" type="xsd:string"/>
+					<element name="menuOrder" type="xsd:unsignedInt"/>
+					<element name="type" type="xsd:string"/>
+					<element name="mimeType" type="xsd:string"/>
+					<element name="commentCount" type="xsd:string"/>
+					<element name="filter" type="xsd:string"/>
+				</all>
+			</complexType>
+			<complexType name="PageArray">
+				<complexContent>
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType" wsdl:arrayType="typens:Page[]"/>
+					</restriction>
+				</complexContent>
+			</complexType>
+			<complexType name="Gallery">
+				<all>
+					<element name="id" type="xsd:unsignedInt"/>
+					<element name="parentId" type="xsd:unsignedInt"/>
+					<element name="title" type="xsd:string"/>
+					<element name="description" type="xsd:string"/>
+					<element name="mainImage" type="typens:Image"/>
+					<element name="images" type="typens:ImageArray"/>
+					<element name="subGalleries" type="typens:GalleryArray"/>
+				</all>
+			</complexType>
+			<complexType name="GalleryArray">
+				<complexContent>
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType" wsdl:arrayType="typens:Gallery[]"/>
+					</restriction>
+				</complexContent>
+			</complexType>
+			<complexType name="Image">
+				<all>
+					<element name="url" type="xsd:string"/>
+					<element name="thumbUrl" type="xsd:string"/>
+					<element name="title" type="xsd:string"/>
+					<element name="description" type="xsd:string"/>
+				</all>
+			</complexType>
+			<complexType name="ImageArray">
+				<complexContent>
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType" wsdl:arrayType="typens:Image[]"/>
+					</restriction>
+				</complexContent>
+			</complexType>
+		</schema>
+	</wsdl:types>
+	<wsdl:message name="fault403"/>
+	<wsdl:message name="fault406"/>
+	<wsdl:message name="fault501"/>
+	<wsdl:message name="getPostsRequest">
+		<wsdl:part name="args" type="xsd:string"/>
+	</wsdl:message>
+	<wsdl:message name="getPostsResponse">
+		<wsdl:part name="return" type="typens:PostArray"/>
+	</wsdl:message>
+	<wsdl:message name="getPostRequest">
+		<wsdl:part name="postId" type="xsd:integer"/>
+	</wsdl:message>
+	<wsdl:message name="getPostResponse">
+		<wsdl:part name="return" type="typens:Post"/>
+	</wsdl:message>
+	<wsdl:message name="getPagesRequest">
+		<wsdl:part name="args" type="xsd:string"/>
+	</wsdl:message>
+	<wsdl:message name="getPagesResponse">
+		<wsdl:part name="return" type="typens:PageArray"/>
+	</wsdl:message>
+	<wsdl:message name="getPageRequest">
+		<wsdl:part name="pageId" type="xsd:integer"/>
+	</wsdl:message>
+	<wsdl:message name="getPageResponse">
+		<wsdl:part name="return" type="typens:Page"/>
+	</wsdl:message>
+	<wsdl:message name="getGalleryHierarchyRequest">
+		<wsdl:part name="args" type="xsd:string"/>
+	</wsdl:message>
+	<wsdl:message name="getGalleryHierarchyResponse">
+		<wsdl:part name="return" type="typens:GalleryArray"/>
+	</wsdl:message>
+	<wsdl:message name="getGalleriesRequest">
+		<wsdl:part name="args" type="xsd:string"/>
+	</wsdl:message>
+	<wsdl:message name="getGalleriesResponse">
+		<wsdl:part name="return" type="typens:GalleryArray"/>
+	</wsdl:message>
+	<wsdl:message name="getGalleryRequest">
+		<wsdl:part name="galleryId" type="xsd:integer"/>
+	</wsdl:message>
+	<wsdl:message name="getGalleryResponse">
+		<wsdl:part name="return" type="typens:Gallery"/>
+	</wsdl:message>
+	<wsdl:message name="getImagesRequest">
+		<wsdl:part name="galleryId" type="xsd:integer"/>
+	</wsdl:message>
+	<wsdl:message name="getImagesResponse">
+		<wsdl:part name="return" type="typens:ImageArray"/>
+	</wsdl:message>
+	<wsdl:portType name="WordPressHttpPort">
+		<wsdl:operation name="getPosts">
+			<wsdl:input message="typens:getPostsRequest"/>
+			<wsdl:output message="typens:getPostsResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="getPost">
+			<wsdl:input message="typens:getPostRequest"/>
+			<wsdl:output message="typens:getPostResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="getPages">
+			<wsdl:input message="typens:getPagesRequest"/>
+			<wsdl:output message="typens:getPagesResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="getPage">
+			<wsdl:input message="typens:getPageRequest"/>
+			<wsdl:output message="typens:getPageResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="getGalleryHierarchy">
+			<wsdl:input message="typens:getGalleryHierarchyRequest"/>
+			<wsdl:output message="typens:getGalleryHierarchyResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="getGalleries">
+			<wsdl:input message="typens:getGalleriesRequest"/>
+			<wsdl:output message="typens:getGalleriesResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="getGallery">
+			<wsdl:input message="typens:getGalleryRequest"/>
+			<wsdl:output message="typens:getGalleryResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="getImages">
+			<wsdl:input message="typens:getImagesRequest"/>
+			<wsdl:output message="typens:getImagesResponse"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="WordPressHttpBinding" type="typens:WordPressHttpPort">
+		<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="getPosts">
+			<soap:operation soapAction="urn:#getPosts"/>
+			<wsdl:input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:WordPress"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:WordPress"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getPost">
+			<soap:operation soapAction="urn:#getPost"/>
+			<wsdl:input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:WordPress"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:WordPress"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getPages">
+			<soap:operation soapAction="urn:#getPages"/>
+			<wsdl:input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:WordPress"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:WordPress"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getPage">
+			<soap:operation soapAction="urn:#getPage"/>
+			<wsdl:input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:WordPress"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:WordPress"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getGalleryHierarchy">
+			<soap:operation soapAction="urn:#getGalleryHierarchy"/>
+			<wsdl:input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:WordPress"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:WordPress"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getGalleries">
+			<soap:operation soapAction="urn:#getGalleries"/>
+			<wsdl:input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:WordPress"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:WordPress"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getGallery">
+			<soap:operation soapAction="urn:#getGallery"/>
+			<wsdl:input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:WordPress"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:WordPress"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getImages">
+			<soap:operation soapAction="urn:#getImages"/>
+			<wsdl:input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:WordPress"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:WordPress"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="WordPressWebService">
+		<wsdl:documentation>Web Service interface for WordPress</wsdl:documentation>
+		<wsdl:port name="WordPressGeneralPort" binding="typens:WordPressHttpBinding">
+			<soap:address location="%{BLOG_URL}/index.php/wpws"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>
