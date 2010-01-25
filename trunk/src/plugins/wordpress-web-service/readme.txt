@@ -1,6 +1,6 @@
 === WordPress Web Service ===
 Contributors: bkahlert
-Tags: wordpress, wsdl, webservices, web, service, web service, webservice, 	soap, rpc, flex, flash, flex4, flex4beta, flash builder
+Tags: wpws, wordpress, wsdl, webservices, web, service, web service, webservice, 	soap, rpc, flex, flash, flex4, flex4beta, flash builder
 Requires at least: 2.8
 Tested up to: 2.9.0
 Stable tag: trunk
@@ -33,7 +33,7 @@ Developers willing to help development on WPWS are greatly welcomed.
 
 1. Upload `wpws` directory to the `/wp-content/plugins/` folder
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Open http://yoursite.com/blog/index.php**/wpws** in your webbrowser to test the plugin.
+3. Open `http://yoursite.com/blog/index.php**/wpws**` in your webbrowser to test the plugin.
 
 == Screenshots ==
 

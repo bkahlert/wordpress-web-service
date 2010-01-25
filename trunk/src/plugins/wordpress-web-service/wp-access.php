@@ -48,7 +48,7 @@ function wpws_getBaseDir() {
 }
 
 function wpws_getPluginBaseDir() {
-	return wpws_getBlogUrl() . "/wp-content/plugins/wpws";
+	return wpws_getBlogUrl() . "/wp-content/plugins/wordpress-web-service";
 }
 
 ?>

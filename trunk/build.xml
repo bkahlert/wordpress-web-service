@@ -1,6 +1,6 @@
 <project name="WordPress Web Service" default="dist" basedir=".">
 	<property name="plugins" location="src/plugins"/>
-	<property name="plugin" location="src/plugins/wpws"/>
+	<property name="plugin" location="src/plugins/wordpress-web-service"/>
  	<property name="build" location="build"/>
 	<property name="dist"  location="dist"/>
 
@@ -9,11 +9,11 @@
 	</target>
 	
 	<target name="pack" depends="init" description="pack the plugin to the build dir">
-		<zip destfile="${build}/wpws.zip" basedir="${plugin}"></zip>
+		<zip destfile="${build}/wordpress-web-service.zip" basedir="${plugin}"></zip>
 	</target>
 	
 	<target name="dist" depends="pack" description="copy the plugin to the plugins dir">
-		<copy tofile="${plugins}/wpws.zip" file="${build}/wpws.zip" overwrite="true"/>
+		<copy tofile="${plugins}/wordpress-web-service.zip" file="${build}/wordpress-web-service.zip" overwrite="true"/>
 		<antcall target="clean"/>
 	</target>
 	

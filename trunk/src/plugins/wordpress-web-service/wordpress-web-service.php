@@ -41,7 +41,7 @@ require_once(dirname(__FILE__) . "/wp-access.php");
  * For that reason only a template WSDL file exists. Should the script detect that
  * a customized WSDL with the correct address doesn't exist it creates it
  * by making a copy of the template WSDL and by replacing the address placeholder.
- * Should you ever need to reallocate the Blog simply delete the wpws.wsdl but provoce it's recreation.
+ * Should you ever need to reallocate the Blog simply delete the wpws.wsdl but provoke it's recreation.
  */
 function wpws_handle_request($wp) {	
 	// Look for the magic /wpws string in the $_SERVER variable
