@@ -6,8 +6,8 @@
 				<all>
 					<element name="id" type="xsd:unsignedInt"/>
 					<element name="author" type="xsd:string"/>
-					<element name="date" type="xsd:string"/>
-					<element name="dateGmt" type="xsd:string"/>
+					<element name="date" type="xsd:date"/>
+					<element name="dateGmt" type="xsd:date"/>
 					<element name="content" type="xsd:string"/>
 					<element name="title" type="xsd:string"/>
 					<element name="excerpt" type="xsd:string"/>
@@ -18,8 +18,8 @@
 					<element name="name" type="xsd:string"/>
 					<element name="toPing" type="xsd:string"/>
 					<element name="pinged" type="xsd:string"/>
-					<element name="modified" type="xsd:string"/>
-					<element name="modifiedGmt" type="xsd:string"/>
+					<element name="modified" type="xsd:date"/>
+					<element name="modifiedGmt" type="xsd:date"/>
 					<element name="contentFiltered" type="xsd:string"/>
 					<element name="parentId" type="xsd:unsignedInt"/>
 					<element name="guid" type="xsd:string"/>
@@ -30,7 +30,7 @@
 					<element name="filter" type="xsd:string"/>
 				</all>
 			</complexType>
-			<complexType name="PostArray">
+			<complexType name="ArrayOfPost">
 				<complexContent>
 					<restriction base="soapenc:Array">
 						<attribute ref="soapenc:arrayType" wsdl:arrayType="typens:Post[]"/>
@@ -38,34 +38,11 @@
 				</complexContent>
 			</complexType>
 			<complexType name="Page">
-				<all>
-					<element name="id" type="xsd:unsignedInt"/>
-					<element name="author" type="xsd:string"/>
-					<element name="date" type="xsd:string"/>
-					<element name="dateGmt" type="xsd:string"/>
-					<element name="content" type="xsd:string"/>
-					<element name="title" type="xsd:string"/>
-					<element name="excerpt" type="xsd:string"/>
-					<element name="status" type="xsd:string"/>
-					<element name="commentStatus" type="xsd:string"/>
-					<element name="pingStatus" type="xsd:string"/>
-					<element name="password" type="xsd:string"/>
-					<element name="name" type="xsd:string"/>
-					<element name="toPing" type="xsd:string"/>
-					<element name="pinged" type="xsd:string"/>
-					<element name="modified" type="xsd:string"/>
-					<element name="modifiedGmt" type="xsd:string"/>
-					<element name="contentFiltered" type="xsd:string"/>
-					<element name="parentId" type="xsd:unsignedInt"/>
-					<element name="guid" type="xsd:string"/>
-					<element name="menuOrder" type="xsd:unsignedInt"/>
-					<element name="type" type="xsd:string"/>
-					<element name="mimeType" type="xsd:string"/>
-					<element name="commentCount" type="xsd:string"/>
-					<element name="filter" type="xsd:string"/>
-				</all>
+				<complexContent>
+					<extension base="typens:Post"/>
+				</complexContent>
 			</complexType>
-			<complexType name="PageArray">
+			<complexType name="ArrayOfPage">
 				<complexContent>
 					<restriction base="soapenc:Array">
 						<attribute ref="soapenc:arrayType" wsdl:arrayType="typens:Page[]"/>
@@ -79,11 +56,11 @@
 					<element name="title" type="xsd:string"/>
 					<element name="description" type="xsd:string"/>
 					<element name="mainImage" type="typens:Image"/>
-					<element name="images" type="typens:ImageArray"/>
-					<element name="subGalleries" type="typens:GalleryArray"/>
+					<element name="images" type="typens:ArrayOfImage"/>
+					<element name="subGalleries" type="typens:ArrayOfGallery"/>
 				</all>
 			</complexType>
-			<complexType name="GalleryArray">
+			<complexType name="ArrayOfGallery">
 				<complexContent>
 					<restriction base="soapenc:Array">
 						<attribute ref="soapenc:arrayType" wsdl:arrayType="typens:Gallery[]"/>
@@ -98,7 +75,7 @@
 					<element name="description" type="xsd:string"/>
 				</all>
 			</complexType>
-			<complexType name="ImageArray">
+			<complexType name="ArrayOfImage">
 				<complexContent>
 					<restriction base="soapenc:Array">
 						<attribute ref="soapenc:arrayType" wsdl:arrayType="typens:Image[]"/>
@@ -107,14 +84,11 @@
 			</complexType>
 		</schema>
 	</wsdl:types>
-	<wsdl:message name="fault403"/>
-	<wsdl:message name="fault406"/>
-	<wsdl:message name="fault501"/>
 	<wsdl:message name="getPostsRequest">
 		<wsdl:part name="args" type="xsd:string"/>
 	</wsdl:message>
 	<wsdl:message name="getPostsResponse">
-		<wsdl:part name="return" type="typens:PostArray"/>
+		<wsdl:part name="return" type="typens:ArrayOfPost"/>
 	</wsdl:message>
 	<wsdl:message name="getPostRequest">
 		<wsdl:part name="postId" type="xsd:integer"/>
@@ -126,7 +100,7 @@
 		<wsdl:part name="args" type="xsd:string"/>
 	</wsdl:message>
 	<wsdl:message name="getPagesResponse">
-		<wsdl:part name="return" type="typens:PageArray"/>
+		<wsdl:part name="return" type="typens:ArrayOfPage"/>
 	</wsdl:message>
 	<wsdl:message name="getPageRequest">
 		<wsdl:part name="pageId" type="xsd:integer"/>
@@ -138,13 +112,13 @@
 		<wsdl:part name="args" type="xsd:string"/>
 	</wsdl:message>
 	<wsdl:message name="getGalleryHierarchyResponse">
-		<wsdl:part name="return" type="typens:GalleryArray"/>
+		<wsdl:part name="return" type="typens:ArrayOfGallery"/>
 	</wsdl:message>
 	<wsdl:message name="getGalleriesRequest">
 		<wsdl:part name="args" type="xsd:string"/>
 	</wsdl:message>
 	<wsdl:message name="getGalleriesResponse">
-		<wsdl:part name="return" type="typens:GalleryArray"/>
+		<wsdl:part name="return" type="typens:ArrayOfGallery"/>
 	</wsdl:message>
 	<wsdl:message name="getGalleryRequest">
 		<wsdl:part name="galleryId" type="xsd:integer"/>
@@ -156,7 +130,7 @@
 		<wsdl:part name="galleryId" type="xsd:integer"/>
 	</wsdl:message>
 	<wsdl:message name="getImagesResponse">
-		<wsdl:part name="return" type="typens:ImageArray"/>
+		<wsdl:part name="return" type="typens:ArrayOfImage"/>
 	</wsdl:message>
 	<wsdl:portType name="WordPressHttpPort">
 		<wsdl:operation name="getPosts">
