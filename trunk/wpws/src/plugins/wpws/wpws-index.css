@@ -1,0 +1,38 @@
+body {
+	font-family: Tahoma, Geneva, sans-serif;
+	padding: 0 1em;
+}
+
+h2 {
+	margin: 1em 0 0.15em 0;
+	font-size: 1.1em;
+	font-weight: 500;
+}
+
+a {
+	color: #21759b;
+	text-decoration: none;
+}
+
+a:hover,
+a:active {
+	text-decoration: underline;
+}
+
+td {
+	width: 50%;
+	vertical-align: top;
+}
+
+td + td {
+	padding-left: 1em;
+}
+
+.explanation {
+	font-size: 0.7em;
+}
+
+.source {
+	margin: 0.2em 0 0 0;
+	font-size: 10px;
+}
