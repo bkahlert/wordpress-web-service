@@ -45,5 +45,8 @@ Developers willing to help development on WPWS are greatly welcomed!
 
 == Changelog ==
 
+= 0.1.1 =
+* Reduction of WSDL file size
+
 = 0.1.0 =
 * Initial version
