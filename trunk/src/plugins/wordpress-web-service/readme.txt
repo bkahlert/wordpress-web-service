@@ -1,6 +1,6 @@
 === WordPress Web Service ===
 Contributors: bkahlert
-Tags: wpws, wordpress, wsdl, webservices, web, service, web service, webservice, 	soap, rpc, flex, flash, flex4, flex4beta, flash builder
+Tags: wpws, wordpress, wsdl, webservices, web, service, web service, webservice, soap, rpc, flex, flash, flex4, flex4beta, flash builder
 Requires at least: 2.8
 Tested up to: 2.9.1
 Stable tag: trunk
@@ -33,11 +33,11 @@ Developers willing to help development on WPWS are greatly welcomed.
 
 1. Upload `wordpress-web-service` directory to the `/wp-content/plugins/` folder
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Open `http://yoursite.com/blog/index.php**/wpws**` in your webbrowser to test the plugin.
+3. Open http://yoursite.com/blog/index.php**/wpws** in your webbrowser to test the plugin.
 
 == Screenshots ==
 
-1. Page http://yoursite.com/blog/index.php/wpws opened in a webbrowser 
+1. Page http://yoursite.com/blog/index.php**/wpws** opened in a webbrowser 
 2. Data Connection Wizard with WSDL selected
 3. Entering the site's WSDL url as shown on the first screenshot
 4. Successfully parsed WSDL file with all currently supported methods and datatypes
@@ -46,7 +46,7 @@ Developers willing to help development on WPWS are greatly welcomed.
 == Changelog ==
 
 = 0.1.2 =
-* Improved instructions on http://yoursite.com/blog/index.php/wsdl
+* Improved instructions on http://yoursite.com/blog/index.php**/wpws**
 * Cleaner directory structure
 
 = 0.1.1 =
