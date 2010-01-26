@@ -15,23 +15,25 @@ for($i=0; $i<strlen($soapClientUrl); $i+=$numCharPerBreak) $formattedSoapClientU
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>WordPress Web Service</title>
-<link rel="stylesheet" type="text/css" href="<?php echo wpws_getPluginUrl(); ?>/wpws-index.css"/>
+<link rel="stylesheet" type="text/css" href="<?php echo wpws_getPluginUrl(); ?>/assets/wpws.css"/>
 </head>
 <body>
-<h1><a href="https://code.google.com/p/wordpress-web-service" target="_blank"><img src="<?php echo wpws_getPluginUrl(); ?>/wpws.png" alt="WordPress Web Service" width="265" height="73" border="0" /></a></h1>
+<h1><a href="https://code.google.com/p/wordpress-web-service" target="_blank"><img src="<?php echo wpws_getPluginUrl(); ?>/assets/wpws.png" alt="WordPress Web Service" width="265" height="73" border="0" /></a> Version <?php echo wpws_getVersion(); ?></h1>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 	<tr>
 		<td><p>Welcome to your WordPress Web Service (WPWS) plugin!</p>
 		<?php if(wpws_WSDLcustomized()) { ?>
 			<p><strong>You have successfully installed WPWS and you're ready to connect <br />
-				your WSDL enabled application to your WordPress installation.</strong><br />
-			Your WSDL url is:<br />
-<a href="<?php echo wpws_getWsdlUrl(); ?>" target="_blank"><?php echo wpws_getWsdlUrl(); ?></a>.</p>
-			<p>On the right you can see the Generic SOAP Client which has already loaded your WSDL file.<br />
+			your WSDL enabled application to your WordPress installation.</strong></p>
+			<p>Your WSDL url is:<br />
+	<a href="<?php echo wpws_getWsdlUrl(); ?>" target="_blank"><?php echo wpws_getWsdlUrl(); ?></a>.</p>
+			<p>On the right you can see the Generic SOAP Client which<br />
+				has already loaded your WSDL file.<br />
 				You may want to check for proper operation of the plugin before using it.</p>
 		<?php } else { ?>
 			<p>You have nearly completed the installation of your WPWS plugin. <br />
-			<strong>Unfortunately your WSDL file could not be created automatically because of missing write rights.</strong><br />
+			<strong>Unfortunately your WSDL file could not be created <br />
+			automatically because of missing write rights.</strong><br />
 			But that's no problem! Follow the 5 steps to create one manually:</p>
 			<ol>
 				<li>Use a FTP client to connect to your WordPress installation</li>

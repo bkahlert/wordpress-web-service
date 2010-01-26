@@ -1,6 +1,17 @@
 body {
 	font-family: Tahoma, Geneva, sans-serif;
-	padding: 0 1em;
+	padding: 0.3em 1em;
+}
+
+h1 {
+	font-size: .7em;
+	font-weight: 500;
+}
+
+h1 a[target=_blank] {
+	padding-right: 0;
+	background: none;
+	padding-right: 0.4em;
 }
 
 h2 {
@@ -19,6 +30,13 @@ a:active {
 	text-decoration: underline;
 }
 
+a[target=_blank] {
+	padding-right: 18px;
+	background: url(external_link.gif) right no-repeat;
+}
+
+
+
 td {
 	width: 50%;
 	vertical-align: top;
@@ -26,6 +44,10 @@ td {
 
 td + td {
 	padding-left: 1em;
+}
+
+iframe {
+	border: 1px solid #999999;
 }
 
 .explanation {

@@ -1,8 +1,8 @@
 === WordPress Web Service ===
 Contributors: bkahlert
-Tags: wpws, wordpress, wsdl, webservices, web, service, web service, webservice, soap, rpc, flex, flash, flex4, flex4beta, flash builder
+Tags: wpws, wordpress, wsdl, webservices, web, service, web service, webservice, 	soap, rpc, flex, flash, flex4, flex4beta, flash builder
 Requires at least: 2.8
-Tested up to: 2.9.1
+Tested up to: 2.9.0
 Stable tag: trunk
 
 WordPress Web Service is used to access WordPress resources via WSDL and SOAP.
@@ -10,7 +10,7 @@ WordPress Web Service is used to access WordPress resources via WSDL and SOAP.
 == Description ==
 
 WordPress Web Service (WPWS) is used to access WordPress resources via WSDL and SOAP.
-It allows you to connect to WSDL enabled software like Adobe Flex / Flash Builder,
+It allows you to connect WSDL enabled software like Adobe Flex / Flash Builder,
 Microsoft Visual Studio, PHP, J2EE, etc. to WordPress resources like posts
 and pages.
 
@@ -27,13 +27,13 @@ That is to add "/wpws" to the index.php part in your WordPress' url.
 For more information visit:
 [WordPress Web Service](http://code.google.com/p/wordpress-web-service/)
 
-Developers willing to help development on WPWS are greatly welcomed!
+Developers willing to help development on WPWS are greatly welcomed.
 
 == Installation ==
 
-1. Upload `wordpress-web-service` directory to the `/wp-content/plugins/` folder
+1. Upload `wpws` directory to the `/wp-content/plugins/` folder
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Open `http://yoursite.com/blog/index.php/wpws` in your webbrowser to test the plugin.
+3. Open `http://yoursite.com/blog/index.php**/wpws**` in your webbrowser to test the plugin.
 
 == Screenshots ==
 
@@ -45,8 +45,13 @@ Developers willing to help development on WPWS are greatly welcomed!
 
 == Changelog ==
 
+= 0.1.2 =
+* Improved instructions on http://yoursite.com/blog/index.php/wsdl
+* Cleaner directory structure
+
 = 0.1.1 =
-* Reduction of WSDL file size
+* Improved WSDL1.1 compability
+* WSDL file size optimization
 
 = 0.1.0 =
 * Initial version

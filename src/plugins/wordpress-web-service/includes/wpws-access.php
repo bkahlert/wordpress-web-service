@@ -1,9 +1,23 @@
 <?php
 
-define("WPWS_WSDL_TEMPLATE", dirname(__FILE__) . "/wpws.template.wsdl");
-define("WPWS_WSDL", dirname(__FILE__) . "/wpws.wsdl");
+define("WPWS_PLUGIN_NAME", "wordpress-web-service");
+define("WPWS_ENTRY_FILE", dirname(__FILE__) . "/../" . WPWS_PLUGIN_NAME . ".php");
+define("WPWS_INDEX_FILE", dirname(__FILE__) . "/wpws-index.php");
+
+define("WPWS_WSDL_TEMPLATE", dirname(__FILE__) . "/../wpws.template.wsdl");
+define("WPWS_WSDL", dirname(__FILE__) . "/../wpws.wsdl");
+define("WPWS_SOAP_SERVER_FILE", dirname(__FILE__) . "/wpws-soap.php");
+define("WPWS_SOAP_SERVER_CLASS", "wp_WebService");
+
 define("WPWS_BLOG_URL", "%{BLOG_URL}");
-define("WPWS_INDEX", dirname(__FILE__) . "/wpws-index.php");
+
+
+
+function wpws_getVersion() {
+	$entry_file = file_get_contents(WPWS_ENTRY_FILE);
+	$version = preg_replace("~.*Version:\W*([a-zA-Z0-9\._]*).*~sm", "\\1", $entry_file);
+	return $version;
+}
 
 function wpws_WSDLcustomized() {
 	if(file_exists(WPWS_WSDL)) {
@@ -35,7 +49,7 @@ function wpws_getWsdlUrl() {
 }
 
 function wpws_getPluginUrl() {
-	return wpws_getBlogUrl() . "/wp-content/plugins/wordpress-web-service";
+	return wpws_getBlogUrl() . "/wp-content/plugins/" . WPWS_PLUGIN_NAME;
 }
 
 function wpws_getBaseDir() {

@@ -1,7 +1,6 @@
 <?php
 
-require_once(dirname(__FILE__) . "/valueObjects.php");
-require_once(dirname(__FILE__) . "/converters.php");
+require_once(dirname(__FILE__) . "/wpws-valueobjects.php");
 
 /**
  * This class is the web service itself.
@@ -22,7 +21,7 @@ class wp_WebService {
 		$posts = get_posts($args);
 		$wpws_posts = array();
 		foreach($posts as $post) {
-			$wpws_posts[] = wpws_convert_Post($post);
+			$wpws_posts[] = wpws_Post::convert($post);
 		}
 		return $wpws_posts;
 	 }
@@ -33,7 +32,7 @@ class wp_WebService {
 	 */
 	function getPost($postId) {
 		$post = get_post($postId, OBJECT);
-		return wpws_convert_Post($post);
+		return wpws_Post::convert($post);
 	 }
 	 
 	 
@@ -49,7 +48,7 @@ class wp_WebService {
 		$pages = get_pages($args);
 		$wpws_pages = array();
 		foreach($pages as $page) {
-			$wpws_pages[] = wpws_convert_Page($page);
+			$wpws_pages[] = wpws_Page::convert($page);
 		}
 		return $wpws_pages;
 	 }
@@ -60,14 +59,20 @@ class wp_WebService {
 	 */
 	function getPage($pageId) {
 		$page = get_page($pageId, OBJECT);
-		return wpws_convert_Page($page);
+		return wpws_Page::convert($page);
 	 }
 	 
 	 
 	 
 	/*** GALLERIES ***/
 	
-	
+	/**
+	 * Returns all galleries (= pages treated as galleries).
+	 * Each gallery has the attribute subGalleries in which an array of all child galleries is stored.
+	 * Note that to minimize network traffic only the meta data and the main image are provided while
+	 * the images array is always empty.
+	 * @return wpws_Gallery[]
+	 */
 	function getGalleryHierarchy($args = null) {
 		// Note that the user provided $args is the 2nd operator which enforced
 		// the parameters defined in the array
@@ -220,11 +225,11 @@ class wp_WebService {
 			// and pass the url to the resize script
 			$url = explode("wp-content/uploads", strval($xml_image["src"])); // http://abc.de/blog/, 2010/xyz/img-120x120.jpg
 			$url = preg_replace("~-\d+x\d+~", "", $url[1], 1); // 2010/xyz/img.jpg
-			$resizeUrl = wpws_getPluginUrl() . "/wp-content/plugins/wpws/resizeImage.php?src=" . $url . "&width=800";
+			$resizeUrl = wpws_getPluginUrl . "/includes/resize_image.php?src=" . $url . "";
 
 			$wpws_images[] = new wpws_Image(
-								$resizeUrl,
 								strval($xml_image["src"]),
+								$resizeUrl,
 								strval($xml_image["title"]),
 								strval($xml_image["alt"]));
 		}

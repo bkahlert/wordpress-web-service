@@ -4,12 +4,12 @@
 Plugin Name: WordPress Web Service
 Plugin URI: http://code.google.com/p/wordpress-web-service/
 Description: WordPress Web Service is used to access WordPress resources via WSDL and SOAP. After installation simply open http://yoursite.com/blog/index.php/wpws to test your plugin.
-Version: 0.1.1
+Version: 0.1.2
 Author: Bj&ouml;rn Kahlert, Philipp Cordes
 Author URI: http://bkahlert.com/
 */
 
-/*  Copyright 2010 Bjšrn Kahlert, Philipp Cordes  (emailÊ: mail@bkahlert.com)
+/*  Copyright 2010 Björn Kahlert, Philipp Cordes  (email : mail@bkahlert.com)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License, version 2, as 
@@ -25,7 +25,7 @@ Author URI: http://bkahlert.com/
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-require_once(dirname(__FILE__) . "/wp-access.php");
+require_once(dirname(__FILE__) . "/includes/wpws-access.php");
 
 /**
  * Catches index.php/wpws requests, stops further execution by WordPress
@@ -64,7 +64,7 @@ function wpws_handle_request($wp) {
 		} else if(!isset($_SERVER["HTTP_SOAPACTION"])) {
 			// client hasn't requested a SOAP operation
 			// return HTML page
-			include(WPWS_INDEX);
+			include(WPWS_INDEX_FILE);
 		} else {
 			// Create a customized WSDL file on disk
 			// so the SoapServer can take this copy to load from.
@@ -73,9 +73,9 @@ function wpws_handle_request($wp) {
 			// SoapServer handles both: deliveration of the requested WSDL file
 			// and execution of SOAP operations
 			header("Content-type: text/xml");
-			require_once(dirname(__FILE__) . "/wp-soap.php");
+			require_once(WPWS_SOAP_SERVER_FILE);
 			$server = new SoapServer(WPWS_WSDL, array("cache_wsdl" => WSDL_CACHE_NONE));
-			$server->setClass("wp_WebService");
+			$server->setClass(WPWS_SOAP_SERVER_CLASS);
 			$server->handle();
 		}
 		exit;

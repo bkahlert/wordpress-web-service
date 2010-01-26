@@ -1,5 +1,6 @@
 <?php
 
+/* SOAP compatible Post definition */
 class wpws_Post {
 	public $id;
 	public $author;
@@ -58,11 +59,58 @@ class wpws_Post {
 		$this->commentCount = $commentCount;
 		$this->filter = $filter;
 	}
+	
+	/**
+	 * Converts a post retrieved trough the WordPress method get_post
+	 * to a wpws_Post object.
+	 * @return wpws_Post
+	 */
+	function convert($post) {
+		if(!$post) return null;
+		else {
+			$wpws_post = new wpws_Post(
+					intval($post->ID),
+					$post->post_author,
+					$post->post_date,
+					$post->post_date_gmt,
+					$post->post_content,
+					$post->post_title,
+					$post->post_excerpt,
+					$post->post_status,
+					$post->comment_status,
+					$post->ping_status,
+					$post->post_password,
+					$post->post_name,
+					$post->to_ping,
+					$post->pinged,
+					$post->post_modified,
+					$post->post_modified_gmt,
+					$post->post_content_filtered,
+					intval($post->post_parent),
+					$post->guid,
+					intval($post->menu_order),
+					$post->post_type,
+					$post->post_mime_type,
+					$post->comment_count,
+					$post->filter);
+			return $wpws_post;
+		}
+	}
 }
 
-// identically to wpws_Page
-class wpws_Page extends wpws_Post { }
+/* SOAP compatible Page definition */
+class wpws_Page extends wpws_Post {
+	/**
+	 * Converts a page retrieved trough the WordPress method get_page
+	 * to a wpws_Page object.
+	 * @return wpws_Page
+	 */
+	function convert($page) {
+		return parent::convert($page);
+	}
+}
 
+/* SOAP compatible Gallery definition */
 class wpws_Gallery {
 	public $id;
 	public $parentId;
@@ -83,15 +131,16 @@ class wpws_Gallery {
 	}
 }
 
+/* SOAP compatible Image definition */
 class wpws_Image {
 	public $url;
-	public $thumbUrl;
+	public $resizableUrl;
 	public $title;
 	public $description;
 	
-	function __construct($url, $thumbUrl, $title, $description) {
+	function __construct($url, $resizableUrl, $title, $description) {
 		$this->url = $url;
-		$this->thumbUrl = $thumbUrl;
+		$this->resizableUrl = $thumbUrl;
 		$this->title = $title;
 		$this->description = $description;
 	}
