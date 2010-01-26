@@ -4,7 +4,7 @@
 Plugin Name: WordPress Web Service
 Plugin URI: http://code.google.com/p/wordpress-web-service/
 Description: WordPress Web Service is used to access WordPress resources via WSDL and SOAP. After installation simply open http://yoursite.com/blog/index.php/wpws to test your plugin.
-Version: 0.1.0
+Version: 0.1.1
 Author: Bj&ouml;rn Kahlert, Philipp Cordes
 Author URI: http://bkahlert.com/
 */
