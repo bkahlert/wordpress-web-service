@@ -225,7 +225,7 @@ class wp_WebService {
 			// and pass the url to the resize script
 			$url = explode("wp-content/uploads", strval($xml_image["src"])); // http://abc.de/blog/, 2010/xyz/img-120x120.jpg
 			$url = preg_replace("~-\d+x\d+~", "", $url[1], 1); // 2010/xyz/img.jpg
-			$resizeUrl = wpws_getPluginUrl . "/includes/resize_image.php?src=" . $url . "";
+			$resizeUrl = wpws_getPluginUrl() . "/includes/resize_image.php?src=" . $url . "";
 
 			$wpws_images[] = new wpws_Image(
 								strval($xml_image["src"]),
