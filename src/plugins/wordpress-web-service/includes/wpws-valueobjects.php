@@ -134,13 +134,13 @@ class wpws_Gallery {
 /* SOAP compatible Image definition */
 class wpws_Image {
 	public $url;
-	public $resizableUrl;
+	public $resizeableUrl;
 	public $title;
 	public $description;
 	
-	function __construct($url, $resizableUrl, $title, $description) {
+	function __construct($url, $resizeableUrl, $title, $description) {
 		$this->url = $url;
-		$this->resizableUrl = $thumbUrl;
+		$this->resizeableUrl = $resizeableUrl;
 		$this->title = $title;
 		$this->description = $description;
 	}
