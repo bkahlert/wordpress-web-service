@@ -70,7 +70,7 @@
 			<complexType name="Image">
 				<all>
 					<element name="url" type="xsd:string"/>
-					<element name="resizableUrl" type="xsd:string"/>
+					<element name="resizeableUrl" type="xsd:string"/>
 					<element name="title" type="xsd:string"/>
 					<element name="description" type="xsd:string"/>
 				</all>
