@@ -10,6 +10,7 @@ define("WPWS_SOAP_SERVER_FILE", dirname(__FILE__) . "/wpws-soap.php");
 define("WPWS_SOAP_SERVER_CLASS", "wp_WebService");
 
 define("WPWS_BLOG_URL", "%{BLOG_URL}");
+define("WP_UPLOAD_DIR", "/wp-content/uploads");
 
 
 

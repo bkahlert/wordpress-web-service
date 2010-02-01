@@ -223,13 +223,23 @@ class wp_WebService {
 		foreach($xml_images as $xml_image) {
 			// Build original / full size image url
 			// and pass the url to the resize script
-			$url = explode("wp-content/uploads", strval($xml_image["src"])); // http://abc.de/blog/, 2010/xyz/img-120x120.jpg
-			$url = preg_replace("~-\d+x\d+~", "", $url[1], 1); // 2010/xyz/img.jpg
-			$resizeUrl = wpws_getPluginUrl() . "/includes/resize_image.php?src=" . $url . "";
+			list(, $uri) = explode(WP_UPLOAD_DIR, strval($xml_image["src"]));	// http://abc.de/blog/, 2010/xyz/img-120x120.jpg
+			$originalUri = preg_replace("~-\d+x\d+~", "", $uri, 1); 			// 						2010/xyz/img.jpg
+			$resizeableUrl = wpws_getPluginUrl() . "/includes/resize_image.php?src=" . $originalUri . "";
+			
+			$file = wpws_getBasedir() . WP_UPLOAD_DIR . $uri;
+			list($width, $height) = getimagesize($file);
+			
+			$originalFile = wpws_getBasedir() . WP_UPLOAD_DIR . $originalUri;
+			list($maxResizeableWidth, $maxResizeableHeight) = getimagesize($originalFile);
 
 			$wpws_images[] = new wpws_Image(
 								strval($xml_image["src"]),
-								$resizeUrl,
+								$width,
+								$height,
+								$resizeableUrl,
+								$maxResizeableWidth,
+								$maxResizeableHeight,
 								strval($xml_image["title"]),
 								strval($xml_image["alt"]));
 		}

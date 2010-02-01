@@ -4,8 +4,8 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);/**/
 
-require_once(dirname(__FILE__) . "/wpws-access.php");
-$file = wpws_getBasedir() . "/wp-content/uploads" . $_REQUEST["src"];
+require_once(dirname(__FILE__) . "/shared.php");
+$file = wpws_getBasedir() . WP_UPLOAD_DIR . $_REQUEST["src"];
 
 $finalImgInfo = array();
 $finalImgInfo[0] = isset($_REQUEST['width']) ? $_REQUEST['width'] : false;
