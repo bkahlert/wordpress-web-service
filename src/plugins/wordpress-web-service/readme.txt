@@ -45,6 +45,10 @@ Developers willing to help development on WPWS are greatly welcomed.
 
 == Changelog ==
 
+= 0.1.3 =
+* Properties `width`, `height`, `maxResizeableWidth` and `maxResizeableHeight` added to Image type
+* Minor bugs removed
+
 = 0.1.2 =
 * Improved instructions on http://yoursite.com/blog/index.php**/wpws**
 * Cleaner directory structure
