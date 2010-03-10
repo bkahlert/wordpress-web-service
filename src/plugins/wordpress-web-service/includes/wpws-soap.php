@@ -76,15 +76,15 @@ class wp_WebService {
 	function getGalleryHierarchy($args = null) {
 		// Note that the user provided $args is the 2nd operator which enforced
 		// the parameters defined in the array
-		$r = wp_parse_args(array("hierarchical" => 1, "sort_column" => "menu_order"), $args);
+		$r = wp_parse_args($args, array("hierarchical" => 1, "sort_column" => "menu_order"));
 		
 		$wpws_pages = wp_WebService::getPages($r);
 		
 		$wpws_galleries = array();
 		$breadcrumb = array();
 		foreach($wpws_pages as $wpws_page) {
-			$mainImage = wp_WebService::getImages($wpws_page->id, 1, 1);
-			$mainImage = (count($mainImage) < 1) ? null : $mainImage[0];
+			$wpws_images = wp_WebService::getImages($wpws_page->id, false);
+			$mainImage = (count($wpws_images) > 0) ? $wpws_images[0] : null;
 			
 			$wpws_gallery = new wpws_Gallery(
 								$wpws_page->id,
@@ -92,7 +92,7 @@ class wp_WebService {
 								$wpws_page->title,
 								"",
 								$mainImage,
-								null,
+								$wpws_images,
 								array());
 			
 			$last_gallery = array_pop($breadcrumb);
@@ -158,8 +158,8 @@ class wp_WebService {
 		
 		$wpws_galleries = array();
 		foreach($wpws_pages as $wpws_page) {
-			$mainImage = wp_WebService::getImages($wpws_page->id, 1, 1);
-			$mainImage = (count($mainImage) < 1) ? null : $mainImage[0];
+			$wpws_images = wp_WebService::getImages($wpws_page->id, false);
+			$mainImage = (count($wpws_images) > 0) ? $wpws_images[0] : null;
 			
 			$wpws_galleries[] = new wpws_Gallery(
 								$wpws_page->id,
@@ -167,7 +167,7 @@ class wp_WebService {
 								$wpws_page->title,
 								"",
 								$mainImage,
-								null,
+								$wpws_images,
 								null);
 		}
 		return $wpws_galleries;
@@ -180,7 +180,7 @@ class wp_WebService {
 	 */
 	function getGallery($galleryId) {
 		$wpws_page = wp_WebService::getPage($galleryId);
-		$wpws_images = wp_WebService::getImages($galleryId);
+		$wpws_images = wp_WebService::getImages($galleryId, false);
 		
 		// Take the first image as the main image
 		$mainImage = (count($wpws_images) > 0) ? $wpws_images[0] : null;
@@ -202,14 +202,15 @@ class wp_WebService {
 	  * if not supplied will return all Images.
 	  *
 	  * @param int id of the page to be returned as a Gallery
+	  * @param bool true if images of sub galleries should also be returned
 	  * @param int index of the first image to return
 	  * @param int index of the the last image to return
 	  * @return wpws_Image[]
 	  */
-	function getImages($galleryId, $start = 1, $end = null) {
+	function getImages($galleryId, $includeSubGalleries, $start = 1, $end = null) {
 		$wpws_page = wp_WebService::getPage($galleryId);
 		$html = $wpws_page->content;
-		$xml = new SimpleXMLElement("<articial_root>" . $html . "</articial_root>");
+		$xml = new SimpleXMLElement("<xml>" . $html . "</xml>");
 		
 		// Construct XPath query
 		$q = "/descendant-or-self::img";
@@ -225,7 +226,7 @@ class wp_WebService {
 			// and pass the url to the resize script
 			list(, $uri) = explode(WP_UPLOAD_DIR, strval($xml_image["src"]));	// http://abc.de/blog/, 2010/xyz/img-120x120.jpg
 			$originalUri = preg_replace("~-\d+x\d+~", "", $uri, 1); 			// 						2010/xyz/img.jpg
-			$resizeableUrl = wpws_getPluginUrl() . "/includes/resize_image.php?src=" . $originalUri . "";
+			$resizeableUrl = wpws_getPluginUrl() . "/resize_image.php?src=" . $originalUri . "&width=%{WIDTH}&height=%{HEIGHT}&quality=%{QUALITY}";
 			
 			$file = wpws_getBasedir() . WP_UPLOAD_DIR . $uri;
 			list($width, $height) = getimagesize($file);
@@ -234,6 +235,7 @@ class wp_WebService {
 			list($maxResizeableWidth, $maxResizeableHeight) = getimagesize($originalFile);
 
 			$wpws_images[] = new wpws_Image(
+								$galleryId,
 								strval($xml_image["src"]),
 								$width,
 								$height,
@@ -243,6 +245,15 @@ class wp_WebService {
 								strval($xml_image["title"]),
 								strval($xml_image["alt"]));
 		}
+		
+		if($includeSubGalleries) {
+			$wpws_subPages = wp_WebService::getPages("child_of=" . $galleryId);
+			foreach($wpws_subPages as $wpws_subPage) {
+				$wpws_subImages = wp_WebService::getImages($wpws_subPage->id);
+				$wpws_images = array_merge($wpws_images, $wpws_subImages);
+			}
+		}
+		
 		return $wpws_images;
 	}
 }

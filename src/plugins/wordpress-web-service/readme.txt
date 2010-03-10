@@ -2,7 +2,7 @@
 Contributors: bkahlert
 Tags: wpws, wordpress, wsdl, webservices, web, service, web service, webservice, soap, rpc, flex, flash, flex4, flex4beta, flash builder
 Requires at least: 2.8
-Tested up to: 2.9.1
+Tested up to: 2.9.2
 Stable tag: trunk
 
 WordPress Web Service is used to access WordPress resources via WSDL and SOAP.
@@ -44,6 +44,13 @@ Developers willing to help development on WPWS are greatly welcomed.
 5. Successfully generated proxy classes for easy access of WordPress resources
 
 == Changelog ==
+
+= 0.1.4 =
+* A writeable cache directory is no more needed in order to dynamically resize images and to return the correct content length to the caller.
+* The `resizeableUrl` attribute of the `Image` datatype contains now 3 placeholders, namely `%{WIDTH}`, `%{HEIGHT}` and `%{QUALITY}`.
+* The `Image` type now contains the property `parentId`
+* Method `getImages` now allows to return not only images of
+one resource but also of all child resources.
 
 = 0.1.3 =
 * Properties `width`, `height`, `maxResizeableWidth` and `maxResizeableHeight` added to Image type

@@ -10,6 +10,7 @@ define("WPWS_SOAP_SERVER_FILE", dirname(__FILE__) . "/wpws-soap.php");
 define("WPWS_SOAP_SERVER_CLASS", "wp_WebService");
 
 define("WPWS_BLOG_URL", "%{BLOG_URL}");
+define("WPWS_CACHE_DIR", dirname(__FILE__) . "/../cache");
 define("WP_UPLOAD_DIR", "/wp-content/uploads");
 
 
@@ -64,6 +65,20 @@ function wpws_getBaseDir() {
 			return $current_path;
 		}
 	}
+}
+
+function wpws_cacheIsFunctional() {
+	return is_dir(WPWS_CACHE_DIR) && is_writable(WPWS_CACHE_DIR);
+}
+
+function wpws_getCacheDir() {
+	return WPWS_CACHE_DIR;
+}
+
+function wpws_genUniqueCode($length = 8) {	
+	$code = md5(uniqid(rand(), true));
+	if(is_int($length)) return substr($code, 0, $length);
+	else return $code;
 }
 
 ?>
