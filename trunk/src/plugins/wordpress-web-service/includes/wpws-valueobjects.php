@@ -124,8 +124,8 @@ class wpws_Gallery {
 		$this->id = $id;
 		$this->parentId = $parentId;
 		$this->title = $title;
-		$this->mainImage = $mainImage;
 		$this->description = $description;
+		$this->mainImage = $mainImage;		
 		$this->images = $images;
 		$this->subGalleries = $subGalleries;
 	}
@@ -133,6 +133,7 @@ class wpws_Gallery {
 
 /* SOAP compatible Image definition */
 class wpws_Image {
+	public $parentId;
 	public $url;
 	public $width;
 	public $height;
@@ -142,7 +143,8 @@ class wpws_Image {
 	public $title;
 	public $description;
 	
-	function __construct($url, $width, $height, $resizeableUrl, $maxResizeableWidth, $maxResizeableHeight, $title, $description) {
+	function __construct($parentId, $url, $width, $height, $resizeableUrl, $maxResizeableWidth, $maxResizeableHeight, $title, $description) {
+		$this->parentId = $parentId;
 		$this->url = $url;
 		$this->width = $width;
 		$this->height = $height;
