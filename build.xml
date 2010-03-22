@@ -1,9 +1,9 @@
 <project name="WordPress Web Service" default="dist" basedir=".">
 	<property name="plugins" location="src/plugins"/>
-	<property name="plugin" location="src/plugins/wordpress-web-service"/>
+	<property name="plugin" location="${plugins}/wordpress-web-service"/>
  	<property name="build" location="build"/>
 	<property name="dist"  location="dist"/>
-
+	
 	<target name="init" depends="clean">
 		<mkdir dir="${build}"/>
 	</target>
