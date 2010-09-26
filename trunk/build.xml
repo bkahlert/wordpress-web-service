@@ -1,23 +1,38 @@
 <project name="WordPress Web Service" default="dist" basedir=".">
-	<property name="plugins" location="src/plugins"/>
-	<property name="plugin" location="${plugins}/wordpress-web-service"/>
- 	<property name="build" location="build"/>
-	<property name="dist"  location="dist"/>
-	
+	<!--<property name="wp.plugin-dir" value="/wp-content/plugins" />
+	<property name="wpws.plugin-name" value="wordpress-web-service" />
+	<property name="wpws.wp-location" value="${wp.plugin-dir}/${wpws.plugin-name}" />
+
+	<property name="wp-develop-suffix" value="develop.bkahlert.com" />
+	<property name="wp-develop-basedir" value="${eclipse.home}/../www-workspace" />
+
+	<property name="wp29-plugin" value="${wp-develop-basedir}/wp29.${wp-develop-suffix}${wpws.wp-location}" />
+	<property name="wp30-plugin" value="${wp-develop-basedir}/wp30.${wp-develop-suffix}${wpws.wp-location}" />-->
+
+	<property name="plugins" location="src/plugins" />
+	<property name="plugin" location="${plugins}/wordpress-web-service" />
+	<property name="build" location="build" />
+	<property name="dist" location="dist" />
+
 	<target name="init" depends="clean">
-		<mkdir dir="${build}"/>
+		<mkdir dir="${build}" />
 	</target>
-	
+
 	<target name="pack" depends="init" description="pack the plugin to the build dir">
-		<zip destfile="${build}/wordpress-web-service.zip" basedir="${plugin}"></zip>
+		<zip destfile="${build}/wordpress-web-service.zip" basedir="${plugin}">
+		</zip>
 	</target>
-	
+
 	<target name="dist" depends="pack" description="copy the plugin to the plugins dir">
-		<copy tofile="${plugins}/wordpress-web-service.zip" file="${build}/wordpress-web-service.zip" overwrite="true"/>
-		<antcall target="clean"/>
+		<copy tofile="${plugins}/wordpress-web-service.zip" file="${build}/wordpress-web-service.zip" overwrite="true" />
+		<antcall target="clean" />
 	</target>
-	
+
 	<target name="clean" description="clean up">
-		<delete dir="${build}"/>
+		<delete dir="${build}" />
+	</target>
+
+	<target name="wp-test" description="copies the plugin files to the wordpress test installations">
+		<exec executable="./test-copy.sh" />
 	</target>
 </project>

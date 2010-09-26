@@ -8,7 +8,6 @@ require_once(dirname(__FILE__) . "/wpws-valueobjects.php");
  * the methods as specified in the WSDL file and requested as in the client SOAP request
  * on that wp_WebService object.
  */
-
 class wp_WebService {
 	/*** POSTS ***/
 	
