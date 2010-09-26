@@ -1,0 +1,2 @@
+cp -r src/plugins/wordpress-web-service/* ../../www-workspace/wp29.develop.bkahlert.com/wp-content/plugins/wordpress-web-service
+cp -r src/plugins/wordpress-web-service/* ../../www-workspace/wp30.develop.bkahlert.com/wp-content/plugins/wordpress-web-service

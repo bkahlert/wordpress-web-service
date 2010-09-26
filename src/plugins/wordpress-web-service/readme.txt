@@ -2,7 +2,7 @@
 Contributors: bkahlert
 Tags: wpws, wordpress, wsdl, webservices, web, service, web service, webservice, soap, rpc, flex, flash, flex4, flex4beta, flash builder
 Requires at least: 2.8
-Tested up to: 2.9.2
+Tested up to: 3.0.1
 Stable tag: trunk
 
 WordPress Web Service is used to access WordPress resources via WSDL and SOAP.
@@ -21,7 +21,7 @@ Furthermore alternative interpretations of WordPress resources are possible.
 For example you can interpret a post/page as a gallery; a datatype consisting of
 all included images with the corresponding attributes.
 
-After installation simply open http://yoursite.com/blog/index.php**/wpws** to test your plugin.
+After installation simply open http://yoursite.com/blog/index.php/wpws to test your plugin.
 That is to add "/wpws" to the index.php part in your WordPress' url.
 
 For more information visit:
@@ -33,17 +33,21 @@ Developers willing to help development on WPWS are greatly welcomed.
 
 1. Upload `wordpress-web-service` directory to the `/wp-content/plugins/` folder
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Open http://yoursite.com/blog/index.php**/wpws** in your webbrowser to test the plugin.
+3. Open http://yoursite.com/blog/index.php/wpws in your webbrowser to test the plugin.
 
 == Screenshots ==
 
-1. Page http://yoursite.com/blog/index.php**/wpws** opened in a webbrowser 
+1. Page http://yoursite.com/blog/index.php/wpws opened in a webbrowser 
 2. Data Connection Wizard with WSDL selected
 3. Entering the site's WSDL url as shown on the first screenshot
 4. Successfully parsed WSDL file with all currently supported methods and datatypes
 5. Successfully generated proxy classes for easy access of WordPress resources
 
 == Changelog ==
+
+= 0.2.0 =
+* Incompatibility with Flash Builder resolved
+* Compatibility with WordPress 3.x
 
 = 0.1.4 =
 * A writeable cache directory is no more needed in order to dynamically resize images and to return the correct content length to the caller.
