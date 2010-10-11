@@ -32,7 +32,11 @@
 		<delete dir="${build}" />
 	</target>
 
-	<target name="wp-test" description="copies the plugin files to the wordpress test installations">
+	<target name="wordpress-test" description="copies the plugin files to the wordpress test installations">
 		<exec executable="./test-copy.sh" />
+	</target>
+
+	<target name="wordpress-dist" description="copies the plugin files to the wordpress distribution project">
+		<exec executable="./wordpress-dist.sh" />
 	</target>
 </project>
