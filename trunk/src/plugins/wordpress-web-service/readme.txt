@@ -45,6 +45,9 @@ Developers willing to help development on WPWS are greatly welcomed.
 
 == Changelog ==
 
+= 0.2.1 =
+* Change of namespace from *.wpws.bkahlert.com to *.wpws.develop.bkahlert.com TODO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 = 0.2.0 =
 * Incompatibility with Flash Builder resolved
 * Compatibility with WordPress 3.x

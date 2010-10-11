@@ -25,7 +25,7 @@ Author URI: http://bkahlert.com/
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-require_once(dirname(__FILE__) . "/lib/FirePHPCore/fb.php");
+//require_once(dirname(__FILE__) . "/lib/FirePHPCore/fb.php");
 require_once(dirname(__FILE__) . "/includes/wpws-access.php");
 
 /**

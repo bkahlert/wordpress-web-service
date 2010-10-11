@@ -1,0 +1,1 @@
+cp -r src/plugins/wordpress-web-service/* ../wordpress-web-service.plugins.wordpress.org
