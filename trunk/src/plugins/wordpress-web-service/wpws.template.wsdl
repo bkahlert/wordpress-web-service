@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <wsdl:definitions xmlns:apachesoap="http://xml.apache.org/xml-soap"
-	xmlns:impl="http://wpws.bkahlert.com" xmlns:model="http://model.wpws.bkahlert.com"
+	xmlns:impl="http://wpws.devel.bkahlert.com" xmlns:model="http://model.wpws.devel.bkahlert.com"
 	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/"
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns="http://schemas.xmlsoap.org/soap/encoding/"
-	targetNamespace="http://wpws.bkahlert.com" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+	targetNamespace="http://wpws.devel.bkahlert.com" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
 	xmlns:http="http://schemas.xmlsoap.org/wsdl/http/">
 	<wsdl:types>
-		<schema elementFormDefault="qualified" targetNamespace="http://model.wpws.bkahlert.com"
+		<schema elementFormDefault="qualified" targetNamespace="http://model.wpws.devel.bkahlert.com"
 			xmlns="http://www.w3.org/2001/XMLSchema">
-			<import namespace="http://wpws.bkahlert.com" />
+			<import namespace="http://wpws.devel.bkahlert.com" />
 			<complexType name="Image">
 				<sequence>
 					<element name="parentId" type="xsd:int" />
@@ -69,9 +69,9 @@
 				</sequence>
 			</complexType>
 		</schema>
-		<schema elementFormDefault="qualified" targetNamespace="http://wpws.bkahlert.com"
+		<schema elementFormDefault="qualified" targetNamespace="http://wpws.devel.bkahlert.com"
 			xmlns="http://www.w3.org/2001/XMLSchema">
-			<import namespace="http://model.wpws.bkahlert.com" />
+			<import namespace="http://model.wpws.devel.bkahlert.com" />
 			<complexType name="ImageArray">
 				<sequence>
 					<element maxOccurs="unbounded" minOccurs="0" name="item"
@@ -186,82 +186,82 @@
 		<wsdlsoap:binding style="rpc"
 			transport="http://schemas.xmlsoap.org/soap/http" />
 		<wsdl:operation name="getImages">
-			<wsdlsoap:operation soapAction="http://wpws.bkahlert.com/getImages" />
+			<wsdlsoap:operation soapAction="http://wpws.devel.bkahlert.com/getImages" />
 			<wsdl:input name="getImagesRequest">
-				<wsdlsoap:body use="literal" namespace="http://wpws.bkahlert.com" />
+				<wsdlsoap:body use="literal" namespace="http://wpws.devel.bkahlert.com" />
 			</wsdl:input>
 			<wsdl:output name="getImagesResponse">
-				<wsdlsoap:body use="literal" namespace="http://wpws.bkahlert.com" />
+				<wsdlsoap:body use="literal" namespace="http://wpws.devel.bkahlert.com" />
 			</wsdl:output>
 		</wsdl:operation>
 		<wsdl:operation name="getPages">
-			<wsdlsoap:operation soapAction="http://wpws.bkahlert.com/getPages" />
+			<wsdlsoap:operation soapAction="http://wpws.devel.bkahlert.com/getPages" />
 			<wsdl:input name="getPagesRequest">
-				<wsdlsoap:body use="literal" namespace="http://wpws.bkahlert.com" />
+				<wsdlsoap:body use="literal" namespace="http://wpws.devel.bkahlert.com" />
 			</wsdl:input>
 			<wsdl:output name="getPagesResponse">
-				<wsdlsoap:body use="literal" namespace="http://wpws.bkahlert.com" />
+				<wsdlsoap:body use="literal" namespace="http://wpws.devel.bkahlert.com" />
 			</wsdl:output>
 		</wsdl:operation>
 		<wsdl:operation name="getPage">
-			<wsdlsoap:operation soapAction="http://wpws.bkahlert.com/getPage" />
+			<wsdlsoap:operation soapAction="http://wpws.devel.bkahlert.com/getPage" />
 			<wsdl:input name="getPageRequest">
-				<wsdlsoap:body use="literal" namespace="http://wpws.bkahlert.com" />
+				<wsdlsoap:body use="literal" namespace="http://wpws.devel.bkahlert.com" />
 			</wsdl:input>
 			<wsdl:output name="getPageResponse">
-				<wsdlsoap:body use="literal" namespace="http://wpws.bkahlert.com" />
+				<wsdlsoap:body use="literal" namespace="http://wpws.devel.bkahlert.com" />
 			</wsdl:output>
 		</wsdl:operation>
 		<wsdl:operation name="getPosts">
-			<wsdlsoap:operation soapAction="http://wpws.bkahlert.com/getPosts" />
+			<wsdlsoap:operation soapAction="http://wpws.devel.bkahlert.com/getPosts" />
 			<wsdl:input name="getPostsRequest">
-				<wsdlsoap:body use="literal" namespace="http://wpws.bkahlert.com" />
+				<wsdlsoap:body use="literal" namespace="http://wpws.devel.bkahlert.com" />
 			</wsdl:input>
 			<wsdl:output name="getPostsResponse">
-				<wsdlsoap:body use="literal" namespace="http://wpws.bkahlert.com" />
+				<wsdlsoap:body use="literal" namespace="http://wpws.devel.bkahlert.com" />
 			</wsdl:output>
 		</wsdl:operation>
 		<wsdl:operation name="getPost">
-			<wsdlsoap:operation soapAction="http://wpws.bkahlert.com/getPost" />
+			<wsdlsoap:operation soapAction="http://wpws.devel.bkahlert.com/getPost" />
 			<wsdl:input name="getPostRequest">
-				<wsdlsoap:body use="literal" namespace="http://wpws.bkahlert.com" />
+				<wsdlsoap:body use="literal" namespace="http://wpws.devel.bkahlert.com" />
 			</wsdl:input>
 			<wsdl:output name="getPostResponse">
-				<wsdlsoap:body use="literal" namespace="http://wpws.bkahlert.com" />
+				<wsdlsoap:body use="literal" namespace="http://wpws.devel.bkahlert.com" />
 			</wsdl:output>
 		</wsdl:operation>
 		<wsdl:operation name="getGalleryHierarchy">
-			<wsdlsoap:operation soapAction="http://wpws.bkahlert.com/getGalleryHierarchy" />
+			<wsdlsoap:operation soapAction="http://wpws.devel.bkahlert.com/getGalleryHierarchy" />
 			<wsdl:input name="getGalleryHierarchyRequest">
-				<wsdlsoap:body use="literal" namespace="http://wpws.bkahlert.com" />
+				<wsdlsoap:body use="literal" namespace="http://wpws.devel.bkahlert.com" />
 			</wsdl:input>
 			<wsdl:output name="getGalleryHierarchyResponse">
-				<wsdlsoap:body use="literal" namespace="http://wpws.bkahlert.com" />
+				<wsdlsoap:body use="literal" namespace="http://wpws.devel.bkahlert.com" />
 			</wsdl:output>
 		</wsdl:operation>
 		<wsdl:operation name="getGalleries">
-			<wsdlsoap:operation soapAction="http://wpws.bkahlert.com/getGalleries" />
+			<wsdlsoap:operation soapAction="http://wpws.devel.bkahlert.com/getGalleries" />
 			<wsdl:input name="getGalleriesRequest">
-				<wsdlsoap:body use="literal" namespace="http://wpws.bkahlert.com" />
+				<wsdlsoap:body use="literal" namespace="http://wpws.devel.bkahlert.com" />
 			</wsdl:input>
 			<wsdl:output name="getGalleriesResponse">
-				<wsdlsoap:body use="literal" namespace="http://wpws.bkahlert.com" />
+				<wsdlsoap:body use="literal" namespace="http://wpws.devel.bkahlert.com" />
 			</wsdl:output>
 		</wsdl:operation>
 		<wsdl:operation name="getGallery">
-			<wsdlsoap:operation soapAction="http://wpws.bkahlert.com/getGallery"></wsdlsoap:operation>
+			<wsdlsoap:operation soapAction="http://wpws.devel.bkahlert.com/getGallery"></wsdlsoap:operation>
 			<wsdl:input name="getGalleryRequest">
-				<wsdlsoap:body use="literal" namespace="http://wpws.bkahlert.com"></wsdlsoap:body>
+				<wsdlsoap:body use="literal" namespace="http://wpws.devel.bkahlert.com"></wsdlsoap:body>
 			</wsdl:input>
 			<wsdl:output name="getGalleryResponse">
-				<wsdlsoap:body use="literal" namespace="http://wpws.bkahlert.com" />
+				<wsdlsoap:body use="literal" namespace="http://wpws.devel.bkahlert.com" />
 			</wsdl:output>
 		</wsdl:operation>
 	</wsdl:binding>
 	<wsdl:service name="WordPressWebService">
 		<wsdl:port name="WordPressWebServiceHttpSoapEndpoint"
 			binding="impl:WordPressWebServiceSoapBinding">
-			<wsdlsoap:address location="%{BLOG_URL}/index.php/wpws" />
+			<wsdlsoap:address location="%{BLOG_URL}/index.php?/wpws" />
 		</wsdl:port>
 	</wsdl:service>
 </wsdl:definitions>

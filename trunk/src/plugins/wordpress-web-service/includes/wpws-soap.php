@@ -209,7 +209,7 @@ class wp_WebService {
 	function getImages($galleryId, $includeSubGalleries, $start = 1, $end = null) {
 		$wpws_page = wp_WebService::getPage($galleryId);
 		$html = $wpws_page->content;
-		$xml = new SimpleXMLElement("<xml>" . $html . "</xml>");
+		$xml = new SimpleXMLElement('<xml>' . utf8_encode(html_entity_decode($html)) . '</xml>');
 		
 		// Construct XPath query
 		$q = "/descendant-or-self::img";
