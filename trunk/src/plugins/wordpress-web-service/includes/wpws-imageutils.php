@@ -6,6 +6,22 @@ define("WPWS_RESIZE_IMAGE_TEMPFILE", WPWS_CACHE_DIR . "/" . wpws_genUniqueCode()
 define("WPWS_RESIZE_IMAGE_ESCAPESIGN", "---");
 
 class wpws_ImageUtils {
+	
+	/**
+	 * Returns true if the given file resides in the given directory.
+	 * @param string dir
+	 * @param string file
+	 * @return string cache entry file name
+	 */
+	function file_resides_in_directory($dir, $file) {
+		$dir = realpath($dir);
+		$file = realpath($file);
+		if(!$dir || !$file) return false;
+		if(strlen($file) < strlen($dir)) return false;
+		if(substr($file, 0, strlen($dir)) != $dir) return false;
+		return true;
+	}
+	
 	/**
 	 * Return the file name to be used as a cache entry
 	 * @param string file (path)

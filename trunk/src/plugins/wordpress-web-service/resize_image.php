@@ -7,12 +7,22 @@ require_once(dirname(__FILE__) . "/includes/wpws-imageutils.php");
 ini_set("display_errors", 1);
 error_reporting(E_ALL);/**/
 
+$jail = realpath(wpws_getBasedir() . WP_UPLOAD_DIR);
+if(!realpath($jail))
+	die("WordPress Web Service plugin needs an update. The references upload directory is invalid or can't be read.");
 
+$width = (isset($_REQUEST["width"]) && is_numeric($_REQUEST["width"])) ? intval($_REQUEST["width"]) : false;
+$height = (isset($_REQUEST["height"]) && is_numeric($_REQUEST["height"])) ? intval($_REQUEST["height"]) : false;
+$quality = (isset($_REQUEST["quality"]) && is_numeric($_REQUEST["quality"])) ? intval($_REQUEST["quality"]) : 80;
 $src = $_REQUEST["src"];
-$width = isset($_REQUEST["width"]) ? $_REQUEST["width"] : false;
-$height = isset($_REQUEST["height"]) ? $_REQUEST["height"] : false;
-$quality = isset($_REQUEST["quality"]) ? $_REQUEST["quality"] : 80;
-$file = wpws_getBasedir() . WP_UPLOAD_DIR . $_REQUEST["src"];
+$file = realpath($jail . $src);
+
+/*
+ * src file must reside in jail directory
+ */
+if(wpws_ImageUtils::file_resides_in_directory($fail, $file))
+	die("The requested file does not reside in the upload directory.");
+
 $send_function_name = wpws_ImageUtils::get_send_function_name($file);
 
 if(wpws_cacheIsFunctional()) {
