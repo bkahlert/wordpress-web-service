@@ -45,6 +45,10 @@ Developers willing to help development on WPWS are greatly welcomed.
 
 == Changelog ==
 
+= 0.2.2 =
+* Resolves potential security vulnerabilities in resize-image.php
+* Resolves potential security vulnerabilities in the web service (wpws-soap.php)
+
 = 0.2.1 =
 * Change of namespace from *.wpws.bkahlert.com to *.wpws.develop.bkahlert.com
 * Issues with pages/posts that contain html entities and are processed by getGallery/getImages resolved

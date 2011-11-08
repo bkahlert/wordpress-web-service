@@ -17,6 +17,8 @@ class wp_WebService {
 	 * @return wpws_Post[]
 	 */
 	function getPosts($args = null) {
+		if($args != null) $args = mysql_real_escape_string($args);
+		
 		$posts = get_posts($args);
 		$wpws_posts = array();
 		foreach($posts as $post) {
@@ -30,6 +32,8 @@ class wp_WebService {
 	 * @return wpws_Post
 	 */
 	function getPost($postId) {
+		$postId = is_numeric($postId) ? intval($postId) : 0;
+		
 		$post = get_post($postId, OBJECT);
 		return wpws_Post::convert($post);
 	 }
@@ -44,6 +48,8 @@ class wp_WebService {
 	 * @return wpws_Page[]
 	 */
 	function getPages($args = null) {
+		if($args != null) $args = mysql_real_escape_string($args);
+		
 		$pages = get_pages($args);
 		$wpws_pages = array();
 		foreach($pages as $page) {
@@ -57,6 +63,8 @@ class wp_WebService {
 	 * @return wpws_Page
 	 */
 	function getPage($pageId) {
+		$pageId = is_numeric($pageId) ? intval($pageId) : 0;
+		
 		$page = get_page($pageId, OBJECT);
 		return wpws_Page::convert($page);
 	 }
@@ -73,6 +81,8 @@ class wp_WebService {
 	 * @return wpws_Gallery[]
 	 */
 	function getGalleryHierarchy($args = null) {
+		if($args != null) $args = mysql_real_escape_string($args);
+		
 		// Note that the user provided $args is the 2nd operator which enforced
 		// the parameters defined in the array
 		$r = wp_parse_args($args, array("hierarchical" => 1, "sort_column" => "menu_order"));
@@ -151,6 +161,8 @@ class wp_WebService {
 	 * @return wpws_Gallery[]
 	 */
 	function getGalleries($args = null) {
+		if($args != null) $args = mysql_real_escape_string($args);
+		
 		// Note that the user provided $args is the 2nd operator which enforced
 		// the parameters defined in the array
 		$wpws_pages = wp_WebService::getPages($args);
@@ -178,6 +190,8 @@ class wp_WebService {
 	 * @return wpws_Gallery
 	 */
 	function getGallery($galleryId) {
+		$galleryId = is_numeric($galleryId) ? intval($galleryId) : 0;
+		
 		$wpws_page = wp_WebService::getPage($galleryId);
 		$wpws_images = wp_WebService::getImages($galleryId, false);
 		
@@ -207,6 +221,11 @@ class wp_WebService {
 	  * @return wpws_Image[]
 	  */
 	function getImages($galleryId, $includeSubGalleries, $start = 1, $end = null) {
+		$galleryId = is_numeric($galleryId) ? intval($galleryId) : 0;
+		$includeSubGalleries = $includeSubGalleries ? true : false;
+		$start = is_numeric($start) ? intval($start) : null;
+		$end = is_numeric($end) ? intval($end) : null;
+		
 		$wpws_page = wp_WebService::getPage($galleryId);
 		$html = $wpws_page->content;
 		$xml = new SimpleXMLElement('<xml>' . utf8_encode(html_entity_decode($html)) . '</xml>');
