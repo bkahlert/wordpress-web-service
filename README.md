@@ -12,7 +12,7 @@ Microsoft Visual Studio, PHP, J2EE, etc. to WordPress resources like posts and p
 ## Installation
 1. Install plugin by ...
   1. ... using your WordPress admin panel to search for the plugin WordPress Web Service and clicking install
-  2. ... or by uploading the manually downloaded and extracted wordpress-web-service.zip to your /wp-content/plugins/ folder
+  2. ... or by uploading the manually downloaded and extracted wordpress-web-service.zip to your /wp-content/plugins/ folder. The plugin can also be downloaded at https://wordpress.org/plugins/wordpress-web-service/.
 2. Activate the plugin through the "Plugins" menu in WordPress
 3. Open http://yoursite.com/blog/index.php/wpws in your webbrowser to test the plugin.
 
