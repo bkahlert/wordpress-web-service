@@ -1,5 +1,7 @@
 # WordPress Web Service (WPWS) is used to access [WordPress](http://wordpress.org/) resources via WSDL and SOAP.
 
+> ⚠️ This repositoriy is no longer maintained. I strongly recommend to look for an alternative.
+
 It allows you to connect to WSDL enabled software like Adobe Flex / Flash Builder,
 Microsoft Visual Studio, PHP, J2EE, etc. to WordPress resources like posts and pages.
 
